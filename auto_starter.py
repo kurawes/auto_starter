@@ -53,25 +53,25 @@ canvas.pack(fill="both", expand = True)   # attach canvas to the root, fill the 
 
 # create frame inside the main window
 frame = tk.Frame(root, bg="gray")
-frame.place(relheight=0.8, relwidth=0.8, relx=0.1, rely=0.1)
+frame.place(relheight=0.9, relwidth=0.9, relx=0.05, rely=0.05)
 
 # create secondary frame for better button control
 frame2 = tk.Frame(root, bg="gray")
-frame2.place(relheight=0.05, relwidth=0.8, relx=0.1, rely=0.9)
+frame2.place(relheight=0.05, relwidth=0.9, relx=0.05, rely=0.9)
 
 
 # add buttons to the frame2
 open_file = tk.Button(frame2, text="Open App", fg="black", bg="light blue", command=add_app)
-open_file.grid(row=0, column=0) # attach open file button to the frame
+open_file.grid(row=0, column=0, sticky="nsew") # attach open file button to the frame
 
 run_all_apps = tk.Button(frame2, text="Run Apps",fg="black", bg="light blue", command=run_apps)
-run_all_apps.grid(row=0, column=1)
+run_all_apps.grid(row=0, column=1, sticky="nsew")
 
 remove_app = tk.Button(frame2, text="Remove App", fg="black", bg="light blue")
-remove_app.grid(row=0, column=2)
+remove_app.grid(row=0, column=2, sticky="nsew")
 
 clear_all_apps = tk.Button(frame2, text="Clear all", fg="black", bg="light blue", command=clear_all_executables)
-clear_all_apps.grid(row=0, column=3)
+clear_all_apps.grid(row=0, column=3, sticky="nsew")
 
 # Configure the columns and rows of the buttons
 frame2.grid_columnconfigure((0,1,2,3), weight=1)
