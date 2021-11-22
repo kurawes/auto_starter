@@ -10,13 +10,13 @@ apps = []   # a list for apps added
 
 if os.path.isfile("savedapps.txt"):
     with open("savedapps.txt", "r") as f:
-        tempApps = f.read()
-        appsTemp = tempApps.split(",")  #split the file at every comma
-        apps = [x for x in appsTemp if x.strip()]   # remove empty spaces in the list
+        temp_apps = f.read()
+        apps_temp = temp_apps.split(",")  #split the file at every comma
+        apps = [x for x in apps_temp if x.strip()]   # remove empty spaces in the list
 
 
 
-def addApp():
+def add_app():
     for item in frame.winfo_children():   # loop through items in the frame
         item.destroy()    # delete previously added apps
 
@@ -33,12 +33,12 @@ def addApp():
         label.pack(side="LEFT", anchor="NW")   # attach the program name to the frame and align them to the left
 
 
-def runApps():
+def run_apps():
     for app in apps:
         os.startfile(app)   # loops over the list and runs the apps
 
 
-def clearAllExecutables():
+def clear_all_executables():
     apps.clear()    # clears the app list
     for app in frame.winfo_children():   # loop through items in the frame
         app.destroy()    # delete previously added apps
@@ -59,17 +59,17 @@ frame2.place(relheight=0.05, relwidth=0.8, relx=0.1, rely=0.9)
 
 
 # add buttons to the frame2
-openFile = tk.Button(frame2, text="Open App", fg="black", bg="light blue", command=addApp)
-openFile.grid(row=0, column=0) # attach open file button to the frame
+open_file = tk.Button(frame2, text="Open App", fg="black", bg="light blue", command=add_app)
+open_file.grid(row=0, column=0) # attach open file button to the frame
 
-runallApps = tk.Button(frame2, text="Run Apps",fg="black", bg="light blue", command=runApps)
-runallApps.grid(row=0, column=1)
+run_all_apps = tk.Button(frame2, text="Run Apps",fg="black", bg="light blue", command=run_apps)
+run_all_apps.grid(row=0, column=1)
 
-removeApp = tk.Button(frame2, text="Remove App", fg="black", bg="light blue")
-removeApp.grid(row=0, column=2)
+remove_app = tk.Button(frame2, text="Remove App", fg="black", bg="light blue")
+remove_app.grid(row=0, column=2)
 
-clearAllApps = tk.Button(frame2, text="Clear all", fg="black", bg="light blue", command=clearAllExecutables)
-clearAllApps.grid(row=0, column=3)
+clear_all_apps = tk.Button(frame2, text="Clear all", fg="black", bg="light blue", command=clear_all_executables)
+clear_all_apps.grid(row=0, column=3)
 
 # Configure the columns and rows of the buttons
 frame2.grid_columnconfigure((0,1,2,3), weight=1)
