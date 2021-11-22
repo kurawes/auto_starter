@@ -32,7 +32,7 @@ def add_app():
     # show the added apps in the frame
     for app in apps:
         label = tk.Label(frame, text=app, bg="light blue")
-        label.pack(side=LEFT, anchor=NW)   # attach the program name to the frame and align them to the left
+        label.pack()   # attach the program name to the frame and align them to the left
 
 
 def run_apps():
