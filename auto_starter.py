@@ -40,9 +40,11 @@ def add_app():
     apps.append(filename)
 
     # show the added apps in the frame
+    heightvalue = 5
     for app in apps:
         label = tk.Label(frame, text=app, fg=TEXT_FG, bg=TEXT_BG)
-        label.pack()   # attach the program name to the frame
+        label.place(x=10, y=heightvalue)   # attach the program name to the frame
+        heightvalue += 30
 
 
 def run_apps():
@@ -94,10 +96,11 @@ frame2.grid_rowconfigure(0, weight=1)
 
 
 # add the programs from the save file to the frame when starting
+heightval = 5
 for app in apps:
     label = tk.Label(frame, text=app, fg=TEXT_FG, bg=TEXT_BG)
-    label.pack()
-
+    label.place(x=10, y=heightval) 
+    heightval += 30
 
 # Run the main loop
 root.mainloop()
