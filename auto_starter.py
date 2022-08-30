@@ -1,6 +1,6 @@
 import tkinter as tk
 import os
-from tkinter import Grid, filedialog, Text
+from tkinter import Grid, IntVar, filedialog, Text
 
 
 # Color variables for easyer access
@@ -17,6 +17,8 @@ root = tk.Tk()
 root.title("Auto Starter")
 
 apps = []   # a list for added apps/executables
+label_nr = [] # a list for each app(row) label
+check_var_nr = []
 
 
 # read the saved apps from the file to list variable
@@ -39,10 +41,17 @@ def add_app():
     # add programs to the apps list
     apps.append(filename)
 
+    # create a list of variable names the length of apps list
+        # get the length of current apps list
+
+        # append one variable to the end of the list
+    
+
     # show the added apps in the frame
     heightvalue = 5
     for app in apps:
-        label = tk.Label(frame, text=app, fg=TEXT_FG, bg=TEXT_BG)
+        # label = tk.Label(frame, text=app, fg=TEXT_FG, bg=TEXT_BG)
+        label = tk.Checkbutton(frame, text=app, fg=TEXT_FG, bg=TEXT_BG)
         label.place(x=10, y=heightvalue)   # attach the program name to the frame
         heightvalue += 30
 
@@ -94,13 +103,25 @@ clear_all_apps.grid(row=0, column=3, sticky="nsew")
 frame2.grid_columnconfigure((0,1,2,3), weight=1)
 frame2.grid_rowconfigure(0, weight=1)
 
+# get the length of the apps list for variable name generation
+apps_list_length = len(apps)
+
+# generate a list of variables for label names
+for nr in range(apps_list_length):
+    label = "label" + str(nr)
+    label_nr.append(label)
+
 
 # add the programs from the save file to the frame when starting
 heightval = 5
+labelcounter = 0
 for app in apps:
-    label = tk.Label(frame, text=app, fg=TEXT_FG, bg=TEXT_BG)
-    label.place(x=10, y=heightval) 
+    # label = tk.Label(frame, text=app, fg=TEXT_FG, bg=TEXT_BG)
+    label_nr[labelcounter] = tk.Checkbutton(frame, text=app, fg=TEXT_FG, bg=TEXT_BG, onvalue = 1, offvalue = 0)
+    label_nr[labelcounter].place(x=10, y=heightval) 
+    labelcounter += 1
     heightval += 30
+    # print(IntVar())
 
 # Run the main loop
 root.mainloop()
